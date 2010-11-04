@@ -585,7 +585,7 @@ public class BlockDoor extends Plugin
 			boolean foundIt = false;
             
 			while ((line = reader.readLine()) != null) {
-				if (!line.contains(type + ":" + creator + "*" + name))
+				if (!line.contains(type + ":" + creator + ":" + name))
 					text += line + "\r\n";
 				else {
 					if(!foundIt)
