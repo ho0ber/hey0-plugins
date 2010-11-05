@@ -846,7 +846,25 @@ public class BlockDoor extends Plugin
 					}
 					writeDoor(doors.get(id));
 					
-					if (settings.verbosity >= 1) { player.sendMessage("Setting door (" + doors.get(id).name + ") type to: " + doors.get(id).fill); }
+					if (settings.verbosity >= 1) { player.sendMessage("Setting door (" + doors.get(id).name + ") fill type to: " + doors.get(id).fill); }
+					return true;
+				}
+				else if (split[0].equalsIgnoreCase("/dempty")) {
+					BlockDoorSettings settings = getSettings(player);
+					int id = -1;
+					if (split.length > 2)
+					{
+						id = findDoor(split[1], player.getName());
+						doors.get(id).empty = Integer.parseInt(split[2]);
+					}
+					else
+					{
+						id = findDoor(settings.name, player.getName());
+						doors.get(id).empty = Integer.parseInt(split[1]);
+					}
+					writeDoor(doors.get(id));
+					
+					if (settings.verbosity >= 1) { player.sendMessage("Setting door (" + doors.get(id).name + ") empty type to: " + doors.get(id).empty); }
 					return true;
 				}
 				else if (split[0].equalsIgnoreCase("/dzone")) {
